@@ -22,7 +22,7 @@ export const Route = createFileRoute("/_layout/items")({
   head: () => ({
     meta: [
       {
-        title: "Items - FastAPI Template",
+        title: "Taches - KisarrWeb",
       },
     ],
   }),
@@ -37,8 +37,8 @@ function ItemsTableContent() {
         <div className="rounded-full bg-muted p-4 mb-4">
           <Search className="h-8 w-8 text-muted-foreground" />
         </div>
-        <h3 className="text-lg font-semibold">You don't have any items yet</h3>
-        <p className="text-muted-foreground">Add a new item to get started</p>
+        <h3 className="text-lg font-semibold">You don't have any todo yet</h3>
+        <p className="text-muted-foreground">Add a new todo to get started</p>
       </div>
     )
   }

@@ -16,7 +16,9 @@ import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as LayoutIndexRouteImport } from './routes/_layout/index'
 import { Route as LayoutAdminRouteImport } from './routes/_layout/admin'
+import { Route as LayoutClassesRouteImport } from './routes/_layout/classes'
 import { Route as LayoutItemsRouteImport } from './routes/_layout/items'
+import { Route as LayoutSchoolsRouteImport } from './routes/_layout/schools'
 import { Route as LayoutSettingsRouteImport } from './routes/_layout/settings'
 
 const LayoutRoute = LayoutRouteImport.update({
@@ -53,9 +55,19 @@ const LayoutAdminRoute = LayoutAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => LayoutRoute,
 } as any)
+const LayoutClassesRoute = LayoutClassesRouteImport.update({
+  id: '/classes',
+  path: '/classes',
+  getParentRoute: () => LayoutRoute,
+} as any)
 const LayoutItemsRoute = LayoutItemsRouteImport.update({
   id: '/items',
   path: '/items',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutSchoolsRoute = LayoutSchoolsRouteImport.update({
+  id: '/schools',
+  path: '/schools',
   getParentRoute: () => LayoutRoute,
 } as any)
 const LayoutSettingsRoute = LayoutSettingsRouteImport.update({
@@ -71,7 +83,9 @@ export interface FileRoutesByFullPath {
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
   '/admin': typeof LayoutAdminRoute
+  '/classes': typeof LayoutClassesRoute
   '/items': typeof LayoutItemsRoute
+  '/schools': typeof LayoutSchoolsRoute
   '/settings': typeof LayoutSettingsRoute
 }
 export interface FileRoutesByTo {
@@ -80,7 +94,9 @@ export interface FileRoutesByTo {
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
   '/admin': typeof LayoutAdminRoute
+  '/classes': typeof LayoutClassesRoute
   '/items': typeof LayoutItemsRoute
+  '/schools': typeof LayoutSchoolsRoute
   '/settings': typeof LayoutSettingsRoute
   '/': typeof LayoutIndexRoute
 }
@@ -92,7 +108,9 @@ export interface FileRoutesById {
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
   '/_layout/admin': typeof LayoutAdminRoute
+  '/_layout/classes': typeof LayoutClassesRoute
   '/_layout/items': typeof LayoutItemsRoute
+  '/_layout/schools': typeof LayoutSchoolsRoute
   '/_layout/settings': typeof LayoutSettingsRoute
   '/_layout/': typeof LayoutIndexRoute
 }
@@ -105,7 +123,9 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/signup'
     | '/admin'
+    | '/classes'
     | '/items'
+    | '/schools'
     | '/settings'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -114,7 +134,9 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/signup'
     | '/admin'
+    | '/classes'
     | '/items'
+    | '/schools'
     | '/settings'
     | '/'
   id:
@@ -125,7 +147,9 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/signup'
     | '/_layout/admin'
+    | '/_layout/classes'
     | '/_layout/items'
+    | '/_layout/schools'
     | '/_layout/settings'
     | '/_layout/'
   fileRoutesById: FileRoutesById
@@ -189,11 +213,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutAdminRouteImport
       parentRoute: typeof LayoutRoute
     }
+    '/_layout/classes': {
+      id: '/_layout/classes'
+      path: '/classes'
+      fullPath: '/classes'
+      preLoaderRoute: typeof LayoutClassesRouteImport
+      parentRoute: typeof LayoutRoute
+    }
     '/_layout/items': {
       id: '/_layout/items'
       path: '/items'
       fullPath: '/items'
       preLoaderRoute: typeof LayoutItemsRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/schools': {
+      id: '/_layout/schools'
+      path: '/schools'
+      fullPath: '/schools'
+      preLoaderRoute: typeof LayoutSchoolsRouteImport
       parentRoute: typeof LayoutRoute
     }
     '/_layout/settings': {
@@ -208,14 +246,18 @@ declare module '@tanstack/react-router' {
 
 interface LayoutRouteChildren {
   LayoutAdminRoute: typeof LayoutAdminRoute
+  LayoutClassesRoute: typeof LayoutClassesRoute
   LayoutItemsRoute: typeof LayoutItemsRoute
+  LayoutSchoolsRoute: typeof LayoutSchoolsRoute
   LayoutSettingsRoute: typeof LayoutSettingsRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutAdminRoute: LayoutAdminRoute,
+  LayoutClassesRoute: LayoutClassesRoute,
   LayoutItemsRoute: LayoutItemsRoute,
+  LayoutSchoolsRoute: LayoutSchoolsRoute,
   LayoutSettingsRoute: LayoutSettingsRoute,
   LayoutIndexRoute: LayoutIndexRoute,
 }

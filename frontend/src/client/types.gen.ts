@@ -35,6 +35,75 @@ export type Body_login_login_access_token = {
 };
 
 /**
+ * ClasseCreate
+ */
+export type ClasseCreate = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Slug
+     */
+    slug: string;
+};
+
+/**
+ * ClassePublic
+ */
+export type ClassePublic = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Slug
+     */
+    slug: string;
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * School Id
+     */
+    school_id: string;
+    /**
+     * Created At
+     */
+    created_at?: string | null;
+    ecole: School;
+};
+
+/**
+ * ClasseUpdate
+ */
+export type ClasseUpdate = {
+    /**
+     * Name
+     */
+    name?: string | null;
+    /**
+     * Slug
+     */
+    slug?: string | null;
+};
+
+/**
+ * ClassesPublic
+ */
+export type ClassesPublic = {
+    /**
+     * Data
+     */
+    data: Array<ClassePublic>;
+    /**
+     * Count
+     */
+    count: number;
+};
+
+/**
  * HTTPValidationError
  */
 export type HTTPValidationError = {
@@ -156,6 +225,180 @@ export type PrivateUserCreate = {
      * Is Verified
      */
     is_verified?: boolean;
+};
+
+/**
+ * School
+ */
+export type School = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Academie
+     */
+    academie?: string;
+    /**
+     * Ief
+     */
+    ief?: string;
+    /**
+     * Directeur
+     */
+    directeur?: string | null;
+    /**
+     * Adresse
+     */
+    adresse?: string | null;
+    /**
+     * Email
+     */
+    email?: string | null;
+    /**
+     * Phone
+     */
+    phone?: string | null;
+    /**
+     * Id
+     */
+    id?: string;
+    /**
+     * Created At
+     */
+    created_at?: string | null;
+    /**
+     * Responsable Id
+     */
+    responsable_id: string;
+};
+
+/**
+ * SchoolCreate
+ */
+export type SchoolCreate = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Academie
+     */
+    academie?: string;
+    /**
+     * Ief
+     */
+    ief?: string;
+    /**
+     * Directeur
+     */
+    directeur?: string | null;
+    /**
+     * Adresse
+     */
+    adresse?: string | null;
+    /**
+     * Email
+     */
+    email?: string | null;
+    /**
+     * Phone
+     */
+    phone?: string | null;
+};
+
+/**
+ * SchoolPublic
+ */
+export type SchoolPublic = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Academie
+     */
+    academie?: string;
+    /**
+     * Ief
+     */
+    ief?: string;
+    /**
+     * Directeur
+     */
+    directeur?: string | null;
+    /**
+     * Adresse
+     */
+    adresse?: string | null;
+    /**
+     * Email
+     */
+    email?: string | null;
+    /**
+     * Phone
+     */
+    phone?: string | null;
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Responsable Id
+     */
+    responsable_id: string;
+    /**
+     * Created At
+     */
+    created_at?: string | null;
+};
+
+/**
+ * SchoolUpdate
+ */
+export type SchoolUpdate = {
+    /**
+     * Name
+     */
+    name?: string | null;
+    /**
+     * Academie
+     */
+    academie?: string | null;
+    /**
+     * Ief
+     */
+    ief?: string | null;
+    /**
+     * Directeur
+     */
+    directeur?: string | null;
+    /**
+     * Adresse
+     */
+    adresse?: string | null;
+    /**
+     * Email
+     */
+    email?: string | null;
+    /**
+     * Phone
+     */
+    phone?: string | null;
+};
+
+/**
+ * SchoolsPublic
+ */
+export type SchoolsPublic = {
+    /**
+     * Data
+     */
+    data: Array<SchoolPublic>;
+    /**
+     * Count
+     */
+    count: number;
 };
 
 /**
@@ -920,6 +1163,309 @@ export type itemsUpdateItemResponses = {
 };
 
 export type itemsUpdateItemResponse = itemsUpdateItemResponses[keyof itemsUpdateItemResponses];
+
+export type schoolsReadSchoolsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Skip
+         */
+        skip?: number;
+        /**
+         * Limit
+         */
+        limit?: number;
+    };
+    url: '/api/v1/schools/';
+};
+
+export type schoolsReadSchoolsErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type schoolsReadSchoolsError = schoolsReadSchoolsErrors[keyof schoolsReadSchoolsErrors];
+
+export type schoolsReadSchoolsResponses = {
+    /**
+     * Successful Response
+     */
+    200: SchoolsPublic;
+};
+
+export type schoolsReadSchoolsResponse = schoolsReadSchoolsResponses[keyof schoolsReadSchoolsResponses];
+
+export type schoolsCreateSchoolData = {
+    body: SchoolCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/schools/';
+};
+
+export type schoolsCreateSchoolErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type schoolsCreateSchoolError = schoolsCreateSchoolErrors[keyof schoolsCreateSchoolErrors];
+
+export type schoolsCreateSchoolResponses = {
+    /**
+     * Successful Response
+     */
+    200: SchoolPublic;
+};
+
+export type schoolsCreateSchoolResponse = schoolsCreateSchoolResponses[keyof schoolsCreateSchoolResponses];
+
+export type schoolsDeleteSchoolData = {
+    body?: never;
+    path: {
+        /**
+         * Id
+         */
+        id: string;
+    };
+    query?: never;
+    url: '/api/v1/schools/{id}';
+};
+
+export type schoolsDeleteSchoolErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type schoolsDeleteSchoolError = schoolsDeleteSchoolErrors[keyof schoolsDeleteSchoolErrors];
+
+export type schoolsDeleteSchoolResponses = {
+    /**
+     * Successful Response
+     */
+    200: Message;
+};
+
+export type schoolsDeleteSchoolResponse = schoolsDeleteSchoolResponses[keyof schoolsDeleteSchoolResponses];
+
+export type schoolsReadItemData = {
+    body?: never;
+    path: {
+        /**
+         * Id
+         */
+        id: string;
+    };
+    query?: never;
+    url: '/api/v1/schools/{id}';
+};
+
+export type schoolsReadItemErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type schoolsReadItemError = schoolsReadItemErrors[keyof schoolsReadItemErrors];
+
+export type schoolsReadItemResponses = {
+    /**
+     * Successful Response
+     */
+    200: SchoolPublic;
+};
+
+export type schoolsReadItemResponse = schoolsReadItemResponses[keyof schoolsReadItemResponses];
+
+export type schoolsUpdateSchoolData = {
+    body: SchoolUpdate;
+    path: {
+        /**
+         * Id
+         */
+        id: string;
+    };
+    query?: never;
+    url: '/api/v1/schools/{id}';
+};
+
+export type schoolsUpdateSchoolErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type schoolsUpdateSchoolError = schoolsUpdateSchoolErrors[keyof schoolsUpdateSchoolErrors];
+
+export type schoolsUpdateSchoolResponses = {
+    /**
+     * Successful Response
+     */
+    200: SchoolPublic;
+};
+
+export type schoolsUpdateSchoolResponse = schoolsUpdateSchoolResponses[keyof schoolsUpdateSchoolResponses];
+
+export type classesReadClassesData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Skip
+         */
+        skip?: number;
+        /**
+         * Limit
+         */
+        limit?: number;
+    };
+    url: '/api/v1/classes/';
+};
+
+export type classesReadClassesErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type classesReadClassesError = classesReadClassesErrors[keyof classesReadClassesErrors];
+
+export type classesReadClassesResponses = {
+    /**
+     * Successful Response
+     */
+    200: ClassesPublic;
+};
+
+export type classesReadClassesResponse = classesReadClassesResponses[keyof classesReadClassesResponses];
+
+export type classesCreateClasseData = {
+    body: ClasseCreate;
+    path?: never;
+    query: {
+        /**
+         * School Id
+         */
+        school_id: string;
+    };
+    url: '/api/v1/classes/';
+};
+
+export type classesCreateClasseErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type classesCreateClasseError = classesCreateClasseErrors[keyof classesCreateClasseErrors];
+
+export type classesCreateClasseResponses = {
+    /**
+     * Successful Response
+     */
+    200: ClassePublic;
+};
+
+export type classesCreateClasseResponse = classesCreateClasseResponses[keyof classesCreateClasseResponses];
+
+export type classesDeleteClasseData = {
+    body?: never;
+    path: {
+        /**
+         * Id
+         */
+        id: string;
+    };
+    query?: never;
+    url: '/api/v1/classes/{id}';
+};
+
+export type classesDeleteClasseErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type classesDeleteClasseError = classesDeleteClasseErrors[keyof classesDeleteClasseErrors];
+
+export type classesDeleteClasseResponses = {
+    /**
+     * Successful Response
+     */
+    200: Message;
+};
+
+export type classesDeleteClasseResponse = classesDeleteClasseResponses[keyof classesDeleteClasseResponses];
+
+export type classesReadClasseData = {
+    body?: never;
+    path: {
+        /**
+         * Id
+         */
+        id: string;
+    };
+    query?: never;
+    url: '/api/v1/classes/{id}';
+};
+
+export type classesReadClasseErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type classesReadClasseError = classesReadClasseErrors[keyof classesReadClasseErrors];
+
+export type classesReadClasseResponses = {
+    /**
+     * Successful Response
+     */
+    200: ClassePublic;
+};
+
+export type classesReadClasseResponse = classesReadClasseResponses[keyof classesReadClasseResponses];
+
+export type classesUpdateClasseData = {
+    body: ClasseUpdate;
+    path: {
+        /**
+         * Id
+         */
+        id: string;
+    };
+    query?: never;
+    url: '/api/v1/classes/{id}';
+};
+
+export type classesUpdateClasseErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type classesUpdateClasseError = classesUpdateClasseErrors[keyof classesUpdateClasseErrors];
+
+export type classesUpdateClasseResponses = {
+    /**
+     * Successful Response
+     */
+    200: ClassePublic;
+};
+
+export type classesUpdateClasseResponse = classesUpdateClasseResponses[keyof classesUpdateClasseResponses];
 
 export type privateCreateUserData = {
     body: PrivateUserCreate;

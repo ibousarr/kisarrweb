@@ -4,6 +4,9 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
+import re
+import unicodedata
+
 import emails
 import jwt
 from jinja2 import Template
@@ -123,3 +126,16 @@ def verify_password_reset_token(token: str) -> str | None:
         return str(decoded_token["sub"])
     except InvalidTokenError:
         return None
+
+
+def generer_slug(texte):
+    # Normaliser pour séparer les caractères et leurs accents
+    texte_normalise = unicodedata.normalize('NFKD', texte)
+    # Supprimer les diacritiques (accents)
+    sans_accents = "".join([c for c in texte_normalise if not unicodedata.combining(c)])
+    # Convertir en minuscules et nettoyer les espaces/caractères non alphanumériques
+    slug = sans_accents.lower().strip()
+    slug = re.sub(r'[^a-z0-9\s-]', '', slug)
+    slug = re.sub(r'[\s_-]+', '-', slug)
+    slug = re.sub(r'^-+|-+$', '', slug)
+    return slug

@@ -4,7 +4,14 @@ from typing import Any
 from sqlmodel import Session, select
 
 from app.core.security import get_password_hash, verify_password
-from app.models import Item, ItemCreate, User, UserCreate, UserUpdate
+from app.models import (
+    Item, ItemCreate, 
+    User, UserCreate, UserUpdate, 
+    School, SchoolCreate, SchoolUpdate,
+    Classe, ClasseCreate, ClasseUpdate,
+    Student, StudentCreate, StudentUpdate,
+    Cemas, CemasCreate, CemasUpdate
+)
 
 
 def create_user(*, session: Session, user_create: UserCreate) -> User:
@@ -66,3 +73,37 @@ def create_item(*, session: Session, item_in: ItemCreate, owner_id: uuid.UUID) -
     session.commit()
     session.refresh(db_item)
     return db_item
+
+
+def create_school(*, session: Session, school_in: SchoolCreate, responsable_id: uuid.UUID) -> School:
+    db_school = School.model_validate(school_in, update={"responsable_id": responsable_id})
+    session.add(db_school)
+    session.commit()
+    session.refresh(db_school)
+    return db_school
+
+
+def create_classe(*, session: Session, classe_in: ClasseCreate, school_id: uuid.UUID) -> Classe:
+    db_classe = Classe.model_validate(classe_in, update={"school_id": school_id})
+    session.add(db_school)
+    session.commit()
+    session.refresh(db_school)
+    return db_school
+
+
+def create_student(*, session: Session, student_in: StudentCreate, classe_id: uuid.UUID) -> Student:
+    db_student = Student.model_validate(student_in, update={"classe_id": classe_id})
+    session.add(db_student)
+    session.commit()
+    session.refresh(db_student)
+    
+    return db_student
+
+
+def create_cemas(*, session: Session, cemas_in: CemasCreate, classe_id: uuid.UUID) -> Cemas:
+    db_cemas = Cemas.model_validate(cemas_in, update={"classe_id": classe_id})
+    session.add(db_cemas)
+    session.commit()
+    session.refresh(db_cemas)
+    
+    return db_cemas

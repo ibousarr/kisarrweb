@@ -2,7 +2,7 @@
 
 import { type Client, type Options as Options2, type TDataShape, urlSearchParamsBodySerializer } from './client';
 import { client } from './client.gen';
-import type { itemsCreateItemData, itemsCreateItemErrors, itemsCreateItemResponses, itemsDeleteItemData, itemsDeleteItemErrors, itemsDeleteItemResponses, itemsReadItemData, itemsReadItemErrors, itemsReadItemResponses, itemsReadItemsData, itemsReadItemsErrors, itemsReadItemsResponses, itemsUpdateItemData, itemsUpdateItemErrors, itemsUpdateItemResponses, loginLoginAccessTokenData, loginLoginAccessTokenErrors, loginLoginAccessTokenResponses, loginRecoverPasswordData, loginRecoverPasswordErrors, loginRecoverPasswordHtmlContentData, loginRecoverPasswordHtmlContentErrors, loginRecoverPasswordHtmlContentResponses, loginRecoverPasswordResponses, loginResetPasswordData, loginResetPasswordErrors, loginResetPasswordResponses, loginTestTokenData, loginTestTokenResponses, privateCreateUserData, privateCreateUserErrors, privateCreateUserResponses, usersCreateUserData, usersCreateUserErrors, usersCreateUserResponses, usersDeleteUserData, usersDeleteUserErrors, usersDeleteUserMeData, usersDeleteUserMeResponses, usersDeleteUserResponses, usersReadUserByIdData, usersReadUserByIdErrors, usersReadUserByIdResponses, usersReadUserMeData, usersReadUserMeResponses, usersReadUsersData, usersReadUsersErrors, usersReadUsersResponses, usersRegisterUserData, usersRegisterUserErrors, usersRegisterUserResponses, usersUpdatePasswordMeData, usersUpdatePasswordMeErrors, usersUpdatePasswordMeResponses, usersUpdateUserData, usersUpdateUserErrors, usersUpdateUserMeData, usersUpdateUserMeErrors, usersUpdateUserMeResponses, usersUpdateUserResponses, utilsHealthCheckData, utilsHealthCheckResponses, utilsTestEmailData, utilsTestEmailErrors, utilsTestEmailResponses } from './types.gen';
+import type { classesCreateClasseData, classesCreateClasseErrors, classesCreateClasseResponses, classesDeleteClasseData, classesDeleteClasseErrors, classesDeleteClasseResponses, classesReadClasseData, classesReadClasseErrors, classesReadClasseResponses, classesReadClassesData, classesReadClassesErrors, classesReadClassesResponses, classesUpdateClasseData, classesUpdateClasseErrors, classesUpdateClasseResponses, itemsCreateItemData, itemsCreateItemErrors, itemsCreateItemResponses, itemsDeleteItemData, itemsDeleteItemErrors, itemsDeleteItemResponses, itemsReadItemData, itemsReadItemErrors, itemsReadItemResponses, itemsReadItemsData, itemsReadItemsErrors, itemsReadItemsResponses, itemsUpdateItemData, itemsUpdateItemErrors, itemsUpdateItemResponses, loginLoginAccessTokenData, loginLoginAccessTokenErrors, loginLoginAccessTokenResponses, loginRecoverPasswordData, loginRecoverPasswordErrors, loginRecoverPasswordHtmlContentData, loginRecoverPasswordHtmlContentErrors, loginRecoverPasswordHtmlContentResponses, loginRecoverPasswordResponses, loginResetPasswordData, loginResetPasswordErrors, loginResetPasswordResponses, loginTestTokenData, loginTestTokenResponses, privateCreateUserData, privateCreateUserErrors, privateCreateUserResponses, schoolsCreateSchoolData, schoolsCreateSchoolErrors, schoolsCreateSchoolResponses, schoolsDeleteSchoolData, schoolsDeleteSchoolErrors, schoolsDeleteSchoolResponses, schoolsReadItemData, schoolsReadItemErrors, schoolsReadItemResponses, schoolsReadSchoolsData, schoolsReadSchoolsErrors, schoolsReadSchoolsResponses, schoolsUpdateSchoolData, schoolsUpdateSchoolErrors, schoolsUpdateSchoolResponses, usersCreateUserData, usersCreateUserErrors, usersCreateUserResponses, usersDeleteUserData, usersDeleteUserErrors, usersDeleteUserMeData, usersDeleteUserMeResponses, usersDeleteUserResponses, usersReadUserByIdData, usersReadUserByIdErrors, usersReadUserByIdResponses, usersReadUserMeData, usersReadUserMeResponses, usersReadUsersData, usersReadUsersErrors, usersReadUsersResponses, usersRegisterUserData, usersRegisterUserErrors, usersRegisterUserResponses, usersUpdatePasswordMeData, usersUpdatePasswordMeErrors, usersUpdatePasswordMeResponses, usersUpdateUserData, usersUpdateUserErrors, usersUpdateUserMeData, usersUpdateUserMeErrors, usersUpdateUserMeResponses, usersUpdateUserResponses, utilsHealthCheckData, utilsHealthCheckResponses, utilsTestEmailData, utilsTestEmailErrors, utilsTestEmailResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -355,6 +355,166 @@ export class ItemsService {
             responseType: 'json',
             security: [{ scheme: 'bearer', type: 'http' }],
             url: '/api/v1/items/{id}',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+}
+
+export class SchoolsService {
+    /**
+     * Read Schools
+     *
+     * Retrieve schools.
+     */
+    public static readSchools<ThrowOnError extends boolean = true>(options?: Options<schoolsReadSchoolsData, ThrowOnError>) {
+        return (options?.client ?? client).get<schoolsReadSchoolsResponses, schoolsReadSchoolsErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/schools/',
+            ...options
+        });
+    }
+    
+    /**
+     * Create School
+     *
+     * Create new school.
+     */
+    public static createSchool<ThrowOnError extends boolean = true>(options: Options<schoolsCreateSchoolData, ThrowOnError>) {
+        return (options.client ?? client).post<schoolsCreateSchoolResponses, schoolsCreateSchoolErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/schools/',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Delete School
+     *
+     * Delete an school.
+     */
+    public static deleteSchool<ThrowOnError extends boolean = true>(options: Options<schoolsDeleteSchoolData, ThrowOnError>) {
+        return (options.client ?? client).delete<schoolsDeleteSchoolResponses, schoolsDeleteSchoolErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/schools/{id}',
+            ...options
+        });
+    }
+    
+    /**
+     * Read Item
+     *
+     * Get school by ID.
+     */
+    public static readItem<ThrowOnError extends boolean = true>(options: Options<schoolsReadItemData, ThrowOnError>) {
+        return (options.client ?? client).get<schoolsReadItemResponses, schoolsReadItemErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/schools/{id}',
+            ...options
+        });
+    }
+    
+    /**
+     * Update School
+     *
+     * Update a school.
+     */
+    public static updateSchool<ThrowOnError extends boolean = true>(options: Options<schoolsUpdateSchoolData, ThrowOnError>) {
+        return (options.client ?? client).put<schoolsUpdateSchoolResponses, schoolsUpdateSchoolErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/schools/{id}',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+}
+
+export class ClassesService {
+    /**
+     * Read Classes
+     *
+     * Retrieve classes.
+     */
+    public static readClasses<ThrowOnError extends boolean = true>(options?: Options<classesReadClassesData, ThrowOnError>) {
+        return (options?.client ?? client).get<classesReadClassesResponses, classesReadClassesErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/classes/',
+            ...options
+        });
+    }
+    
+    /**
+     * Create Classe
+     *
+     * Create new classe.
+     */
+    public static createClasse<ThrowOnError extends boolean = true>(options: Options<classesCreateClasseData, ThrowOnError>) {
+        return (options.client ?? client).post<classesCreateClasseResponses, classesCreateClasseErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/classes/',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Delete Classe
+     *
+     * Delete a classe.
+     */
+    public static deleteClasse<ThrowOnError extends boolean = true>(options: Options<classesDeleteClasseData, ThrowOnError>) {
+        return (options.client ?? client).delete<classesDeleteClasseResponses, classesDeleteClasseErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/classes/{id}',
+            ...options
+        });
+    }
+    
+    /**
+     * Read Classe
+     *
+     * Get classe by ID.
+     */
+    public static readClasse<ThrowOnError extends boolean = true>(options: Options<classesReadClasseData, ThrowOnError>) {
+        return (options.client ?? client).get<classesReadClasseResponses, classesReadClasseErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/classes/{id}',
+            ...options
+        });
+    }
+    
+    /**
+     * Update Classe
+     *
+     * Update a classe.
+     */
+    public static updateClasse<ThrowOnError extends boolean = true>(options: Options<classesUpdateClasseData, ThrowOnError>) {
+        return (options.client ?? client).put<classesUpdateClasseResponses, classesUpdateClasseErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/classes/{id}',
             ...options,
             headers: {
                 'Content-Type': 'application/json',

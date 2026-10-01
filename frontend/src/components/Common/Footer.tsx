@@ -4,10 +4,10 @@ import { FaXTwitter } from "react-icons/fa6"
 const socialLinks = [
   {
     icon: FaGithub,
-    href: "https://github.com/fastapi/fastapi",
+    href: "https://github.com/ibousarr/kisarrweb",
     label: "GitHub",
   },
-  { icon: FaXTwitter, href: "https://x.com/fastapi", label: "X" },
+  { icon: FaXTwitter, href: "https://x.com/kisarrweb", label: "X" },
   {
     icon: FaLinkedinIn,
     href: "https://linkedin.com/company/fastapi",
@@ -22,7 +22,7 @@ export function Footer() {
     <footer className="border-t py-4 px-6">
       <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
         <p className="text-muted-foreground text-sm">
-          Full Stack FastAPI Template - {currentYear}
+          Kisarr Web - {currentYear}
         </p>
         <div className="flex items-center gap-4">
           {socialLinks.map(({ icon: Icon, href, label }) => (
