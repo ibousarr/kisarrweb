@@ -2,7 +2,7 @@
 
 import { type Client, type Options as Options2, type TDataShape, urlSearchParamsBodySerializer } from './client';
 import { client } from './client.gen';
-import type { classesCreateClasseData, classesCreateClasseErrors, classesCreateClasseResponses, classesDeleteClasseData, classesDeleteClasseErrors, classesDeleteClasseResponses, classesReadClasseData, classesReadClasseErrors, classesReadClasseResponses, classesReadClassesData, classesReadClassesErrors, classesReadClassesResponses, classesUpdateClasseData, classesUpdateClasseErrors, classesUpdateClasseResponses, itemsCreateItemData, itemsCreateItemErrors, itemsCreateItemResponses, itemsDeleteItemData, itemsDeleteItemErrors, itemsDeleteItemResponses, itemsReadItemData, itemsReadItemErrors, itemsReadItemResponses, itemsReadItemsData, itemsReadItemsErrors, itemsReadItemsResponses, itemsUpdateItemData, itemsUpdateItemErrors, itemsUpdateItemResponses, loginLoginAccessTokenData, loginLoginAccessTokenErrors, loginLoginAccessTokenResponses, loginRecoverPasswordData, loginRecoverPasswordErrors, loginRecoverPasswordHtmlContentData, loginRecoverPasswordHtmlContentErrors, loginRecoverPasswordHtmlContentResponses, loginRecoverPasswordResponses, loginResetPasswordData, loginResetPasswordErrors, loginResetPasswordResponses, loginTestTokenData, loginTestTokenResponses, privateCreateUserData, privateCreateUserErrors, privateCreateUserResponses, schoolsCreateSchoolData, schoolsCreateSchoolErrors, schoolsCreateSchoolResponses, schoolsDeleteSchoolData, schoolsDeleteSchoolErrors, schoolsDeleteSchoolResponses, schoolsReadItemData, schoolsReadItemErrors, schoolsReadItemResponses, schoolsReadSchoolsData, schoolsReadSchoolsErrors, schoolsReadSchoolsResponses, schoolsUpdateSchoolData, schoolsUpdateSchoolErrors, schoolsUpdateSchoolResponses, usersCreateUserData, usersCreateUserErrors, usersCreateUserResponses, usersDeleteUserData, usersDeleteUserErrors, usersDeleteUserMeData, usersDeleteUserMeResponses, usersDeleteUserResponses, usersReadUserByIdData, usersReadUserByIdErrors, usersReadUserByIdResponses, usersReadUserMeData, usersReadUserMeResponses, usersReadUsersData, usersReadUsersErrors, usersReadUsersResponses, usersRegisterUserData, usersRegisterUserErrors, usersRegisterUserResponses, usersUpdatePasswordMeData, usersUpdatePasswordMeErrors, usersUpdatePasswordMeResponses, usersUpdateUserData, usersUpdateUserErrors, usersUpdateUserMeData, usersUpdateUserMeErrors, usersUpdateUserMeResponses, usersUpdateUserResponses, utilsHealthCheckData, utilsHealthCheckResponses, utilsTestEmailData, utilsTestEmailErrors, utilsTestEmailResponses } from './types.gen';
+import type { classesCreateClasseData, classesCreateClasseErrors, classesCreateClasseResponses, classesDeleteClasseData, classesDeleteClasseErrors, classesDeleteClasseResponses, classesReadClasseData, classesReadClasseErrors, classesReadClasseResponses, classesReadClassesData, classesReadClassesErrors, classesReadClassesResponses, classesUpdateClasseData, classesUpdateClasseErrors, classesUpdateClasseResponses, itemsCreateItemData, itemsCreateItemErrors, itemsCreateItemResponses, itemsDeleteItemData, itemsDeleteItemErrors, itemsDeleteItemResponses, itemsReadItemData, itemsReadItemErrors, itemsReadItemResponses, itemsReadItemsData, itemsReadItemsErrors, itemsReadItemsResponses, itemsUpdateItemData, itemsUpdateItemErrors, itemsUpdateItemResponses, loginLoginAccessTokenData, loginLoginAccessTokenErrors, loginLoginAccessTokenResponses, loginRecoverPasswordData, loginRecoverPasswordErrors, loginRecoverPasswordHtmlContentData, loginRecoverPasswordHtmlContentErrors, loginRecoverPasswordHtmlContentResponses, loginRecoverPasswordResponses, loginResetPasswordData, loginResetPasswordErrors, loginResetPasswordResponses, loginTestTokenData, loginTestTokenResponses, privateCreateUserData, privateCreateUserErrors, privateCreateUserResponses, schoolsCreateSchoolData, schoolsCreateSchoolErrors, schoolsCreateSchoolResponses, schoolsDeleteSchoolData, schoolsDeleteSchoolErrors, schoolsDeleteSchoolResponses, schoolsReadItemData, schoolsReadItemErrors, schoolsReadItemResponses, schoolsReadSchoolsData, schoolsReadSchoolsErrors, schoolsReadSchoolsResponses, schoolsUpdateSchoolData, schoolsUpdateSchoolErrors, schoolsUpdateSchoolResponses, studentsCreateStudentData, studentsCreateStudentErrors, studentsCreateStudentResponses, studentsDeleteStudentData, studentsDeleteStudentErrors, studentsDeleteStudentResponses, studentsReadStudentData, studentsReadStudentErrors, studentsReadStudentResponses, studentsReadStudentsData, studentsReadStudentsErrors, studentsReadStudentsResponses, studentsUpdateStudentData, studentsUpdateStudentErrors, studentsUpdateStudentResponses, usersCreateUserData, usersCreateUserErrors, usersCreateUserResponses, usersDeleteUserData, usersDeleteUserErrors, usersDeleteUserMeData, usersDeleteUserMeResponses, usersDeleteUserResponses, usersReadUserByIdData, usersReadUserByIdErrors, usersReadUserByIdResponses, usersReadUserMeData, usersReadUserMeResponses, usersReadUsersData, usersReadUsersErrors, usersReadUsersResponses, usersRegisterUserData, usersRegisterUserErrors, usersRegisterUserResponses, usersUpdatePasswordMeData, usersUpdatePasswordMeErrors, usersUpdatePasswordMeResponses, usersUpdateUserData, usersUpdateUserErrors, usersUpdateUserMeData, usersUpdateUserMeErrors, usersUpdateUserMeResponses, usersUpdateUserResponses, utilsHealthCheckData, utilsHealthCheckResponses, utilsTestEmailData, utilsTestEmailErrors, utilsTestEmailResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -515,6 +515,86 @@ export class ClassesService {
             responseType: 'json',
             security: [{ scheme: 'bearer', type: 'http' }],
             url: '/api/v1/classes/{id}',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+}
+
+export class StudentsService {
+    /**
+     * Read Students
+     *
+     * Retrieve students.
+     */
+    public static readStudents<ThrowOnError extends boolean = true>(options?: Options<studentsReadStudentsData, ThrowOnError>) {
+        return (options?.client ?? client).get<studentsReadStudentsResponses, studentsReadStudentsErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/students/',
+            ...options
+        });
+    }
+    
+    /**
+     * Create Student
+     *
+     * Create new student.
+     */
+    public static createStudent<ThrowOnError extends boolean = true>(options: Options<studentsCreateStudentData, ThrowOnError>) {
+        return (options.client ?? client).post<studentsCreateStudentResponses, studentsCreateStudentErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/students/',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Delete Student
+     *
+     * Delete a student.
+     */
+    public static deleteStudent<ThrowOnError extends boolean = true>(options: Options<studentsDeleteStudentData, ThrowOnError>) {
+        return (options.client ?? client).delete<studentsDeleteStudentResponses, studentsDeleteStudentErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/students/{id}',
+            ...options
+        });
+    }
+    
+    /**
+     * Read Student
+     *
+     * Get student by ID.
+     */
+    public static readStudent<ThrowOnError extends boolean = true>(options: Options<studentsReadStudentData, ThrowOnError>) {
+        return (options.client ?? client).get<studentsReadStudentResponses, studentsReadStudentErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/students/{id}',
+            ...options
+        });
+    }
+    
+    /**
+     * Update Student
+     *
+     * Update a student.
+     */
+    public static updateStudent<ThrowOnError extends boolean = true>(options: Options<studentsUpdateStudentData, ThrowOnError>) {
+        return (options.client ?? client).put<studentsUpdateStudentResponses, studentsUpdateStudentErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/students/{id}',
             ...options,
             headers: {
                 'Content-Type': 'application/json',

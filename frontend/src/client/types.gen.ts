@@ -35,6 +35,32 @@ export type Body_login_login_access_token = {
 };
 
 /**
+ * Classe
+ */
+export type Classe = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Slug
+     */
+    slug: string;
+    /**
+     * Id
+     */
+    id?: string;
+    /**
+     * Created At
+     */
+    created_at?: string | null;
+    /**
+     * School Id
+     */
+    school_id: string;
+};
+
+/**
  * ClasseCreate
  */
 export type ClasseCreate = {
@@ -236,6 +262,10 @@ export type School = {
      */
     name: string;
     /**
+     * Slug
+     */
+    slug: string;
+    /**
      * Academie
      */
     academie?: string;
@@ -282,6 +312,10 @@ export type SchoolCreate = {
      */
     name: string;
     /**
+     * Slug
+     */
+    slug: string;
+    /**
      * Academie
      */
     academie?: string;
@@ -315,6 +349,10 @@ export type SchoolPublic = {
      * Name
      */
     name: string;
+    /**
+     * Slug
+     */
+    slug: string;
     /**
      * Academie
      */
@@ -399,6 +437,171 @@ export type SchoolsPublic = {
      * Count
      */
     count: number;
+};
+
+/**
+ * StudentCreate
+ */
+export type StudentCreate = {
+    /**
+     * Ien
+     */
+    ien: string;
+    /**
+     * Prenom
+     */
+    prenom: string;
+    /**
+     * Nom
+     */
+    nom: string;
+    /**
+     * Datnais
+     */
+    datnais?: string;
+    /**
+     * Lieunais
+     */
+    lieunais?: string;
+    /**
+     * Sexe
+     */
+    sexe?: string;
+    /**
+     * Pere
+     */
+    pere?: string | null;
+    /**
+     * Mere
+     */
+    mere?: string | null;
+    /**
+     * Adresse
+     */
+    adresse?: string | null;
+    /**
+     * Contact
+     */
+    contact?: string | null;
+};
+
+/**
+ * StudentPublic
+ */
+export type StudentPublic = {
+    /**
+     * Ien
+     */
+    ien: string;
+    /**
+     * Prenom
+     */
+    prenom: string;
+    /**
+     * Nom
+     */
+    nom: string;
+    /**
+     * Datnais
+     */
+    datnais?: string;
+    /**
+     * Lieunais
+     */
+    lieunais?: string;
+    /**
+     * Sexe
+     */
+    sexe?: string;
+    /**
+     * Pere
+     */
+    pere?: string | null;
+    /**
+     * Mere
+     */
+    mere?: string | null;
+    /**
+     * Adresse
+     */
+    adresse?: string | null;
+    /**
+     * Contact
+     */
+    contact?: string | null;
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Classe Id
+     */
+    classe_id: string;
+    /**
+     * Created At
+     */
+    created_at?: string | null;
+    classe: Classe;
+};
+
+/**
+ * StudentUpdate
+ */
+export type StudentUpdate = {
+    /**
+     * Name
+     */
+    name?: string | null;
+    /**
+     * Prenom
+     */
+    prenom?: string | null;
+    /**
+     * Nom
+     */
+    nom?: string | null;
+    /**
+     * Datnais
+     */
+    datnais: string | null;
+    /**
+     * Lieunais
+     */
+    lieunais?: string | null;
+    /**
+     * Sexe
+     */
+    sexe?: string | null;
+    /**
+     * Pere
+     */
+    pere?: string | null;
+    /**
+     * Mere
+     */
+    mere?: string | null;
+    /**
+     * Adresse
+     */
+    adresse?: string | null;
+    /**
+     * Contact
+     */
+    contact?: string | null;
+};
+
+/**
+ * StudentsPublic
+ */
+export type StudentsPublic = {
+    /**
+     * Count
+     */
+    count: number;
+    /**
+     * Data
+     */
+    data: Array<StudentPublic>;
 };
 
 /**
@@ -1466,6 +1669,160 @@ export type classesUpdateClasseResponses = {
 };
 
 export type classesUpdateClasseResponse = classesUpdateClasseResponses[keyof classesUpdateClasseResponses];
+
+export type studentsReadStudentsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Skip
+         */
+        skip?: number;
+        /**
+         * Limit
+         */
+        limit?: number;
+    };
+    url: '/api/v1/students/';
+};
+
+export type studentsReadStudentsErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type studentsReadStudentsError = studentsReadStudentsErrors[keyof studentsReadStudentsErrors];
+
+export type studentsReadStudentsResponses = {
+    /**
+     * Successful Response
+     */
+    200: StudentsPublic;
+};
+
+export type studentsReadStudentsResponse = studentsReadStudentsResponses[keyof studentsReadStudentsResponses];
+
+export type studentsCreateStudentData = {
+    body: StudentCreate;
+    path?: never;
+    query: {
+        /**
+         * Classe Id
+         */
+        classe_id: string;
+    };
+    url: '/api/v1/students/';
+};
+
+export type studentsCreateStudentErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type studentsCreateStudentError = studentsCreateStudentErrors[keyof studentsCreateStudentErrors];
+
+export type studentsCreateStudentResponses = {
+    /**
+     * Successful Response
+     */
+    200: StudentPublic;
+};
+
+export type studentsCreateStudentResponse = studentsCreateStudentResponses[keyof studentsCreateStudentResponses];
+
+export type studentsDeleteStudentData = {
+    body?: never;
+    path: {
+        /**
+         * Id
+         */
+        id: string;
+    };
+    query?: never;
+    url: '/api/v1/students/{id}';
+};
+
+export type studentsDeleteStudentErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type studentsDeleteStudentError = studentsDeleteStudentErrors[keyof studentsDeleteStudentErrors];
+
+export type studentsDeleteStudentResponses = {
+    /**
+     * Successful Response
+     */
+    200: Message;
+};
+
+export type studentsDeleteStudentResponse = studentsDeleteStudentResponses[keyof studentsDeleteStudentResponses];
+
+export type studentsReadStudentData = {
+    body?: never;
+    path: {
+        /**
+         * Id
+         */
+        id: string;
+    };
+    query?: never;
+    url: '/api/v1/students/{id}';
+};
+
+export type studentsReadStudentErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type studentsReadStudentError = studentsReadStudentErrors[keyof studentsReadStudentErrors];
+
+export type studentsReadStudentResponses = {
+    /**
+     * Successful Response
+     */
+    200: StudentPublic;
+};
+
+export type studentsReadStudentResponse = studentsReadStudentResponses[keyof studentsReadStudentResponses];
+
+export type studentsUpdateStudentData = {
+    body: StudentUpdate;
+    path: {
+        /**
+         * Id
+         */
+        id: string;
+    };
+    query?: never;
+    url: '/api/v1/students/{id}';
+};
+
+export type studentsUpdateStudentErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type studentsUpdateStudentError = studentsUpdateStudentErrors[keyof studentsUpdateStudentErrors];
+
+export type studentsUpdateStudentResponses = {
+    /**
+     * Successful Response
+     */
+    200: StudentPublic;
+};
+
+export type studentsUpdateStudentResponse = studentsUpdateStudentResponses[keyof studentsUpdateStudentResponses];
 
 export type privateCreateUserData = {
     body: PrivateUserCreate;

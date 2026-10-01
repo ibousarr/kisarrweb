@@ -7,7 +7,6 @@ import iconLight from "/assets/images/kis.png"
 import logoLight from "/assets/images/kisarrweb2.png"
 import logo from "/assets/images/kisarrweb2.png"
 
-
 interface LogoProps {
   variant?: "full" | "icon" | "responsive"
   className?: string

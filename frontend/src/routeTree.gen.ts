@@ -20,6 +20,7 @@ import { Route as LayoutClassesRouteImport } from './routes/_layout/classes'
 import { Route as LayoutItemsRouteImport } from './routes/_layout/items'
 import { Route as LayoutSchoolsRouteImport } from './routes/_layout/schools'
 import { Route as LayoutSettingsRouteImport } from './routes/_layout/settings'
+import { Route as LayoutStudentsRouteImport } from './routes/_layout/students'
 
 const LayoutRoute = LayoutRouteImport.update({
   id: '/_layout',
@@ -75,6 +76,11 @@ const LayoutSettingsRoute = LayoutSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => LayoutRoute,
 } as any)
+const LayoutStudentsRoute = LayoutStudentsRouteImport.update({
+  id: '/students',
+  path: '/students',
+  getParentRoute: () => LayoutRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof LayoutIndexRoute
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/items': typeof LayoutItemsRoute
   '/schools': typeof LayoutSchoolsRoute
   '/settings': typeof LayoutSettingsRoute
+  '/students': typeof LayoutStudentsRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof LoginRoute
@@ -98,6 +105,7 @@ export interface FileRoutesByTo {
   '/items': typeof LayoutItemsRoute
   '/schools': typeof LayoutSchoolsRoute
   '/settings': typeof LayoutSettingsRoute
+  '/students': typeof LayoutStudentsRoute
   '/': typeof LayoutIndexRoute
 }
 export interface FileRoutesById {
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   '/_layout/items': typeof LayoutItemsRoute
   '/_layout/schools': typeof LayoutSchoolsRoute
   '/_layout/settings': typeof LayoutSettingsRoute
+  '/_layout/students': typeof LayoutStudentsRoute
   '/_layout/': typeof LayoutIndexRoute
 }
 export interface FileRouteTypes {
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/items'
     | '/schools'
     | '/settings'
+    | '/students'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/login'
@@ -138,6 +148,7 @@ export interface FileRouteTypes {
     | '/items'
     | '/schools'
     | '/settings'
+    | '/students'
     | '/'
   id:
     | '__root__'
@@ -151,6 +162,7 @@ export interface FileRouteTypes {
     | '/_layout/items'
     | '/_layout/schools'
     | '/_layout/settings'
+    | '/_layout/students'
     | '/_layout/'
   fileRoutesById: FileRoutesById
 }
@@ -241,6 +253,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutSettingsRouteImport
       parentRoute: typeof LayoutRoute
     }
+    '/_layout/students': {
+      id: '/_layout/students'
+      path: '/students'
+      fullPath: '/students'
+      preLoaderRoute: typeof LayoutStudentsRouteImport
+      parentRoute: typeof LayoutRoute
+    }
   }
 }
 
@@ -250,6 +269,7 @@ interface LayoutRouteChildren {
   LayoutItemsRoute: typeof LayoutItemsRoute
   LayoutSchoolsRoute: typeof LayoutSchoolsRoute
   LayoutSettingsRoute: typeof LayoutSettingsRoute
+  LayoutStudentsRoute: typeof LayoutStudentsRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
 }
 
@@ -259,6 +279,7 @@ const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutItemsRoute: LayoutItemsRoute,
   LayoutSchoolsRoute: LayoutSchoolsRoute,
   LayoutSettingsRoute: LayoutSettingsRoute,
+  LayoutStudentsRoute: LayoutStudentsRoute,
   LayoutIndexRoute: LayoutIndexRoute,
 }
 

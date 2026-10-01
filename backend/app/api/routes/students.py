@@ -32,16 +32,10 @@ def read_students(
     Retrieve students.
     """
     les_classes = [
-        "2ca38955-1375-4f48-9d0f-5776d5f35aaa",
-        "89bcf47f-c492-4d35-976d-7a5035097b7a",
-        "174c812e-2a3f-46ef-94d2-3c56c0cfa1e8",
-        "18f98f31-a476-4844-8c98-fd5458b9713f",
-        "ba5f3949-1ae7-438a-accd-ba6081488e49",
-        "3778ae72-a8dc-4f7e-912e-50c1b49d0c97",
-        "c12b5b2d-8b8b-4274-9fbd-8d38d7bca536",
-        "e3d13f36-bd71-4331-a639-466801f7abb5",
-        "39d4c182-823c-4af2-af40-6b4606efeece",
-        "e70b56e4-3115-4898-8e8d-236c0c5e5f86",
+        uuid.UUID("2a4532d6-7e5d-40fe-876f-f326fb466bfa"),
+        uuid.UUID("5fbd8f81-7786-4843-a792-ff57e5d5f0d4"),
+        uuid.UUID("3c6cf9d9-b9de-4e62-aade-214eb5fd076a"),
+        uuid.UUID("743ef96d-c0e9-4e50-bb4a-424c1aafa67d")
     ]
     valeur_aleatoire = random.choice(les_classes)
     if current_user.is_superuser:
@@ -53,7 +47,7 @@ def read_students(
         students = session.exec(statement).all()
     else:
         school = session.exec(select(School).where(col(School.responsable_id)==current_user.id)).first() 
-        # print({"Ecole": school})
+        print({"Ecole": school})
         stmt = (
             select(Classe).order_by(col(Classe.created_at).asc()).where(col(Classe.school_id)==school.id)
         )
@@ -62,22 +56,22 @@ def read_students(
         count_statement = (
             select(func.count())
             .select_from(Student)
-            .where(Student.classe_id == valeur_aleatoire)
+            # .where(Student.classe_id == classes[0].id)
         )
         count = session.exec(count_statement).one()
 
-        # print(f"\nClasse : {classe_slug}-{classe_nom}-{ecole}")
-        # print("-" * 30)
+        print(f"\nClasse : {classes[0].name}-{school.name}-{school.responsable.full_name}")
+        print("-" * 30)
         statement = (
             select(Student)
-            .where(Student.classe_id == valeur_aleatoire)
+            # .where(Student.classe_id == classes[0].id)
             .order_by(col(Student.classe_id).asc(), col(Student.nom).asc(), col(Student.prenom).asc())
             .offset(skip)
             .limit(limit)
         )
         students = session.exec(statement).all()
-        # print({"classe": classe.slug, "ecole": classe.ecole.name, "responsable": classe.ecole.responsable.full_name})
-        # print({"Mes classe": classes})
+        print({"classe": classes[0].slug, "ecole": classes[0].ecole.name, "responsable": classes[0].ecole.responsable.full_name})
+        print({"Mes classe": classes})
                 
  
     students_public = [StudentPublic.model_validate(student) for student in students]
