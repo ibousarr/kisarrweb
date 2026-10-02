@@ -24,7 +24,7 @@ export const Route = createFileRoute("/_layout/classes")({
   head: () => ({
     meta: [
       {
-        title: "Classes - FastAPI Template",
+        title: "Classes - Kisarr Web",
       },
     ],
   }),

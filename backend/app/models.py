@@ -88,6 +88,7 @@ class SchoolCreate(SchoolBase):
 # Properties to receive on item update
 class SchoolUpdate(SQLModel):
     name: str | None = Field(default=None, min_length=1, max_length=80)
+    slug: str | None = Field(default=None, min_length=1, max_length=120)
     academie: str | None = Field(default=None, max_length=50)
     ief: str | None = Field(default=None, max_length=50)
     directeur: str | None = Field(default=None, max_length=60)

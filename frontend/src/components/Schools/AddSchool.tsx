@@ -32,6 +32,7 @@ import { handleError } from "@/utils"
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
+  slug: z.string().min(1, { message: "Slug is required" }),
   academie: z.string().optional(),
   ief: z.string().optional(),
   directeur: z.string().optional(),
@@ -53,6 +54,7 @@ const AddSchool = () => {
     criteriaMode: "all",
     defaultValues: {
       name: "",
+      slug: "",
       academie: "",
       ief: "",
       directeur: "",
@@ -119,7 +121,27 @@ const AddSchool = () => {
                   </FormItem>
                 )}
               />
-
+              <FormField
+                control={form.control}
+                name="slug"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      Slug de l'Etablissement{" "}
+                      <span className="text-destructive">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Slug of the school"
+                        type="text"
+                        {...field}
+                        required
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="academie"

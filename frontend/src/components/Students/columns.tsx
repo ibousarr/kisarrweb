@@ -67,6 +67,11 @@ export const columns: ColumnDef<StudentPublic>[] = [
     cell: ({ row }) => <span className="font-medium">{row.original.lieunais}</span>,
   },
   {
+    accessorKey: "contact",
+    header: "Contact",
+    cell: ({ row }) => <span className="font-medium">{row.original.contact}</span>,
+  },
+  {
     id: "actions",
     header: () => <span className="sr-only">Actions</span>,
     cell: ({ row }) => (

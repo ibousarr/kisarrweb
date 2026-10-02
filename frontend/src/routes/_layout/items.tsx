@@ -22,7 +22,7 @@ export const Route = createFileRoute("/_layout/items")({
   head: () => ({
     meta: [
       {
-        title: "Taches - KisarrWeb",
+        title: "Taches - Kisarr Web",
       },
     ],
   }),
