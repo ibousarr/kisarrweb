@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/suspicious/noArrayIndexKey: <explanation> */
 import { Skeleton } from "@/components/ui/skeleton"
 import {
   Table,
